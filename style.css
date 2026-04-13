@@ -20,7 +20,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     background-color: var(--light-bg);
     color: #333;
 }
@@ -504,4 +504,167 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #999;
+}
+
+/* ===== Entry / Landing Page ===== */
+.landing-body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(196, 181, 253, 0.25), transparent 30%),
+        radial-gradient(circle at 85% 85%, rgba(167, 139, 250, 0.25), transparent 34%),
+        linear-gradient(145deg, #2a1458 0%, #3f1c75 45%, #5b21b6 100%);
+    color: #f5f3ff;
+    font-family: 'Times New Roman', Times, serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.bubble-layer {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -140px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.08));
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.28);
+    animation: bubbleRise linear infinite;
+}
+
+.b1 { left: 7%; width: 28px; height: 28px; animation-duration: 16s; animation-delay: 0s; }
+.b2 { left: 18%; width: 52px; height: 52px; animation-duration: 23s; animation-delay: 2s; }
+.b3 { left: 29%; width: 20px; height: 20px; animation-duration: 14s; animation-delay: 1s; }
+.b4 { left: 43%; width: 66px; height: 66px; animation-duration: 28s; animation-delay: 2.6s; }
+.b5 { left: 57%; width: 30px; height: 30px; animation-duration: 17s; animation-delay: 3.4s; }
+.b6 { left: 69%; width: 45px; height: 45px; animation-duration: 21s; animation-delay: 0.7s; }
+.b7 { left: 80%; width: 22px; height: 22px; animation-duration: 15s; animation-delay: 3s; }
+.b8 { left: 89%; width: 58px; height: 58px; animation-duration: 25s; animation-delay: 1.4s; }
+.b9 { left: 96%; width: 26px; height: 26px; animation-duration: 18s; animation-delay: 4s; }
+
+@keyframes bubbleRise {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.95);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.85;
+    }
+    70% {
+        opacity: 0.55;
+    }
+    100% {
+        transform: translateY(-118vh) translateX(22px) scale(1.12);
+        opacity: 0;
+    }
+}
+
+.landing-wrap {
+    width: min(980px, 92vw);
+    margin: 0 auto;
+    padding: 6rem 0 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-panel {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 14px 30px rgba(31, 10, 62, 0.35);
+    backdrop-filter: blur(7px);
+}
+
+.hero-kicker {
+    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ddd6fe;
+    font-weight: 700;
+}
+
+.hero-panel h1 {
+    margin: 0 0 0.9rem;
+    font-size: clamp(1.9rem, 4.3vw, 3rem);
+    line-height: 1.1;
+    color: #faf5ff;
+}
+
+.hero-copy {
+    margin: 0;
+    max-width: 65ch;
+    color: #ede9fe;
+    font-size: 1.03rem;
+}
+
+.brief-grid {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.brief-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 0.95rem;
+    box-shadow: 0 6px 14px rgba(31, 10, 62, 0.25);
+}
+
+.brief-card h2 {
+    margin: 0 0 0.35rem;
+    color: #f5d0fe;
+    font-size: 1rem;
+}
+
+.brief-card p {
+    margin: 0;
+    color: #f3e8ff;
+    font-size: 0.95rem;
+}
+
+.hero-actions {
+    margin-top: 1.2rem;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.hero-btn.primary {
+    background: linear-gradient(100deg, #a855f7, #7c3aed);
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.45);
+}
+
+.hero-btn.primary:hover {
+    background: linear-gradient(100deg, #9333ea, #6d28d9);
+    color: #ffffff;
+}
+
+@media (max-width: 760px) {
+    .landing-wrap {
+        padding-top: 3.5rem;
+    }
+
+    .hero-panel {
+        padding: 1.25rem;
+    }
+
+    .brief-grid {
+        grid-template-columns: 1fr;
+    }
 }
