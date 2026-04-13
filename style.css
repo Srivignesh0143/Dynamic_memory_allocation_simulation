@@ -1,0 +1,507 @@
+/* ===================================
+   Dynamic Memory Allocation Simulator
+   Main Stylesheet
+   =================================== */
+
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: #333;
+}
+
+/* ===== Navigation Bar ===== */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* ===== Cards ===== */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-header {
+    border-radius: 8px 8px 0 0;
+    padding: 1rem;
+    font-weight: 600;
+    border: none;
+}
+
+/* ===== Form Controls ===== */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    border-color: #157347;
+}
+
+.btn-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* ===== Tabs ===== */
+.nav-tabs {
+    border-bottom: 2px solid var(--border-color);
+    gap: 1rem;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: #666;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    background-color: transparent;
+}
+
+/* ===== Tables ===== */
+.table {
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.table thead {
+    background-color: var(--light-bg);
+    font-weight: 600;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.table-bordered {
+    border: 1px solid var(--border-color);
+}
+
+.table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+/* Status cell styling */
+.table td:last-child {
+    font-weight: 500;
+}
+
+/* Mark unallocated processes with red background */
+.status-not-allocated {
+    background-color: #f8d7da !important;
+    color: #721c24;
+    font-weight: 600;
+}
+
+.status-allocated {
+    background-color: #d4edda !important;
+    color: #155724;
+    font-weight: 600;
+}
+
+/* ===== Memory Visualization ===== */
+.memory-container {
+    padding: 1.5rem;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    min-height: 200px;
+}
+
+.memory-block {
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.block-header {
+    padding: 0.5rem 1rem;
+    background-color: var(--light-bg);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.block-content {
+    display: flex;
+    height: 40px;
+    position: relative;
+}
+
+.memory-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    transition: opacity 0.2s;
+    position: relative;
+}
+
+.memory-slot:last-child {
+    border-right: none;
+}
+
+.memory-slot:hover {
+    opacity: 0.85;
+    z-index: 10;
+}
+
+.memory-slot-unallocated {
+    background-color: #e9ecef;
+    color: #666;
+    font-weight: 600;
+}
+
+.memory-slot.tooltip-parent {
+    position: relative;
+}
+
+.memory-slot-tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    z-index: 100;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.memory-slot:hover .memory-slot-tooltip {
+    visibility: visible;
+}
+
+/* ===== Process Color Scheme ===== */
+.process-1 { background-color: #FF6B6B; }
+.process-2 { background-color: #4ECDC4; }
+.process-3 { background-color: #45B7D1; }
+.process-4 { background-color: #FFA07A; }
+.process-5 { background-color: #98D8C8; }
+.process-6 { background-color: #F7DC6F; color: #333; }
+.process-7 { background-color: #BB8FCE; }
+.process-8 { background-color: #85C1E2; }
+.process-9 { background-color: #F8B739; color: #333; }
+.process-10 { background-color: #52C4A1; }
+
+/* ===== Statistics Boxes ===== */
+.stat-box {
+    padding: 1.5rem;
+    background-color: var(--light-bg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.stat-box:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+/* ===== Alerts ===== */
+.alert {
+    border-radius: 6px;
+    border: none;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 991px) {
+    .col-lg-4, .col-lg-8 {
+        margin-bottom: 2rem;
+    }
+
+    .nav-tabs {
+        flex-direction: column;
+    }
+
+    .nav-tabs .nav-link {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        padding-left: 1rem;
+    }
+
+    .nav-tabs .nav-link.active {
+        border-bottom: none;
+        border-left: 3px solid var(--primary-color);
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .table td {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .block-content {
+        height: 30px;
+    }
+
+    .memory-slot {
+        font-size: 0.65rem;
+    }
+}
+
+/* ===== Loading and Animation ===== */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.spinner-animation {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== Process Flow Styles ===== */
+.process-flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.process-step {
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    border-left: 4px solid #764ba2;
+    animation: slideIn 0.5s ease-in-out;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.process-step:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.process-step-success {
+    border-left-color: #28a745;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.process-step-failed {
+    border-left-color: #dc3545;
+    background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+}
+
+.process-step-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.process-step-details {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.step-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 0.5rem;
+    font-weight: 700;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== Chart Container ===== */
+#fragmentationChart {
+    max-height: 350px;
+}
+
+.chart-container {
+    position: relative;
+    height: 350px;
+    margin-bottom: 2rem;
+}
+
+/* ===== Comparison Table Styles ===== */
+#comparisonTable tbody tr:hover {
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+#comparisonTable td {
+    vertical-align: middle;
+    padding: 1rem 0.75rem;
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
