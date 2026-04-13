@@ -566,9 +566,9 @@ body {
 }
 
 .landing-wrap {
-    width: min(980px, 92vw);
+    width: min(1160px, 94vw);
     margin: 0 auto;
-    padding: 6rem 0 4rem;
+    padding: 7rem 0 5rem;
     position: relative;
     z-index: 1;
 }
@@ -577,14 +577,14 @@ body {
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.32);
     border-radius: 18px;
-    padding: 2rem;
+    padding: 3rem;
     box-shadow: 0 14px 30px rgba(31, 10, 62, 0.35);
     backdrop-filter: blur(7px);
 }
 
 .hero-kicker {
-    margin: 0 0 0.6rem;
-    font-size: 0.8rem;
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #ddd6fe;
@@ -592,8 +592,8 @@ body {
 }
 
 .hero-panel h1 {
-    margin: 0 0 0.9rem;
-    font-size: clamp(1.9rem, 4.3vw, 3rem);
+    margin: 0 0 1rem;
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
     line-height: 1.1;
     color: #faf5ff;
 }
@@ -602,46 +602,51 @@ body {
     margin: 0;
     max-width: 65ch;
     color: #ede9fe;
-    font-size: 1.03rem;
+    font-size: 1.2rem;
+    line-height: 1.55;
 }
 
 .brief-grid {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem;
+    gap: 1rem;
 }
 
 .brief-card {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 12px;
-    padding: 0.95rem;
+    padding: 1.2rem 1.25rem;
     box-shadow: 0 6px 14px rgba(31, 10, 62, 0.25);
 }
 
 .brief-card h2 {
     margin: 0 0 0.35rem;
     color: #f5d0fe;
-    font-size: 1rem;
+    font-size: 1.15rem;
 }
 
 .brief-card p {
     margin: 0;
     color: #f3e8ff;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
 }
 
 .hero-actions {
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .hero-btn {
     display: inline-block;
     text-decoration: none;
-    padding: 0.7rem 1.1rem;
+    padding: 0.95rem 1.5rem;
     border-radius: 999px;
     font-weight: 700;
+    font-size: 1.05rem;
 }
 
 .hero-btn.primary {
@@ -661,7 +666,29 @@ body {
     }
 
     .hero-panel {
-        padding: 1.25rem;
+        padding: 1.5rem;
+    }
+
+    .hero-panel h1 {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+    }
+
+    .hero-copy {
+        font-size: 1.05rem;
+    }
+
+    .brief-card h2 {
+        font-size: 1.05rem;
+    }
+
+    .brief-card p {
+        font-size: 0.98rem;
+    }
+
+    .hero-btn {
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
     }
 
     .brief-grid {
